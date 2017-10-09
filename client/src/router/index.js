@@ -23,6 +23,5 @@ export default new Router({
       name: 'RegisterComponent',
       component: RegisterComponent
     }
-  ],
-  mode: 'history'
+  ]
 })
