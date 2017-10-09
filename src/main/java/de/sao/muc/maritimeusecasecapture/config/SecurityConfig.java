@@ -36,10 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/api/**").authenticated()
                 .antMatchers("**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin()
-                .loginPage("/app");
+                .loginPage("/");
     }
 
     @Bean
