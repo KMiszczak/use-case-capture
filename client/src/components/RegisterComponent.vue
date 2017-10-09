@@ -27,7 +27,11 @@
           </b-form-group>
 
           <b-button type="submit" variant="primary">Register</b-button>
-          <b-button type="reset" variant="secondary">Cancel</b-button>
+
+          <router-link to="/"> 
+            <b-button type="reset" variant="secondary" >Cancel</b-button> 
+          </router-link>
+          
         </b-form>
 
       </p>
@@ -61,7 +65,20 @@ export default {
 
 <style scoped>
 #inner {
-  display: table;
-  margin: 0 auto;
+  width: 500px;
+  height: 600px;
+
+  position: absolute;
+  /*it can be fixed too*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  /*this to solve "the content will not be cut when the window is smaller than the content": */
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
 }
 </style>
