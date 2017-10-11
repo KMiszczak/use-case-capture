@@ -18,8 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
     private final UserDetailsService userDetailsService;
 
     public SecurityConfig(UserDetailsService userDetailsService) {
@@ -31,16 +29,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/api/users/register").permitAll()
                 .antMatchers("/api/**").authenticated()
                 .antMatchers("**").permitAll()
-                .anyRequest().authenticated().and()
+                .antMatchers("/api/users/register").permitAll()
+                .antMatchers("/#/user").hasAuthority(RolesConstants.ADMIN)
+                .antMatchers("/api/users/register/**").permitAll().and()
                 .formLogin()
-                .loginPage("/");
+                .defaultSuccessUrl("/#/user")
+                .failureUrl("/#/loginError").and()
+                .logout().logoutSuccessUrl("/login.html");
+
+        http.csrf().disable();
     }
 
     @Bean

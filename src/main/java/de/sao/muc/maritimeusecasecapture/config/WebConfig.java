@@ -19,14 +19,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        //registry.addViewController("/app").setViewName("login");
+        //registry.addViewController("/login").setViewName("login");
         //registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        registry.addViewController("/app/**").setViewName("forward:/login");
     }
-
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        //registry.addMapping("/**");
+        registry.addMapping("/**");
     }
 
 }

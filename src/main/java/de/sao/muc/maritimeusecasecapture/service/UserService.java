@@ -42,6 +42,10 @@ public class UserService {
         return userRepository.save(userEntity) != null;
     }
 
+    public UserEntity findByNickname(String nickname) {
+        return userRepository.findUserEntityByNickname(nickname);
+    }
+
     public UserEntity getUser(int id) {
         return userRepository.findOne(id);
     }

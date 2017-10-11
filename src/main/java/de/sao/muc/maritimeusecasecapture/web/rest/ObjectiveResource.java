@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/api/rest/hello")
+@RequestMapping("/api/objectives")
 @RestController
 public class ObjectiveResource {
 
@@ -19,7 +19,7 @@ public class ObjectiveResource {
     }
 
 
-    @GetMapping("/api/objective/{id}")
+    @GetMapping("/{id}")
     public ObjectiveEntity getObjective(@PathVariable int id) {
         return objectiveService.getObjective(id);
     }

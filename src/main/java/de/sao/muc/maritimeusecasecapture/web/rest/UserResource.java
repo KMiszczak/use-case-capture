@@ -4,6 +4,7 @@ import de.sao.muc.maritimeusecasecapture.model.UserEntity;
 import de.sao.muc.maritimeusecasecapture.service.UserService;
 import de.sao.muc.maritimeusecasecapture.web.dto.RegisterUserDto;
 import de.sao.muc.maritimeusecasecapture.web.dto.UserDto;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -17,12 +18,12 @@ public class UserResource {
         this.userService = userService;
     }
 
-    @GetMapping("/api/user/{id}")
+    @GetMapping("/{id}")
     public UserEntity getUser(@PathVariable int id) {
         return userService.getUser(id);
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void register(@RequestBody RegisterUserDto registerUserDto) {
         userService.register(registerUserDto);
     }
